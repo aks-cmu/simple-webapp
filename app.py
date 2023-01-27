@@ -15,7 +15,7 @@ def showData():
         fileName = request.form.get('file-name')
         print(fileName)
         if os.path.exists('csv_data/' + fileName):
-            df = pd.read_csv('csv_data/test.csv')
+            df = pd.read_csv('csv_data/' + fileName)
             print(df)
             df_html = df.to_html()
             return render_template('display_csv.html', data_var=df_html)
@@ -25,4 +25,4 @@ def showData():
         return render_template('enter_csv.html')
 
 if __name__ == "__main__":
-    app.run(port=6060)
+    app.run(host='0.0.0.0',port=6060)
